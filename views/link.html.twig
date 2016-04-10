@@ -2,8 +2,14 @@
 
 {% block title %}New link{% endblock %}
 
+
 {% block content %}
-  <h2 class="text-center">New link</h2>
+  <h2 class="text-center">{{ block('title') }}</h2>
+  {% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+      {{ flashMessage }}
+    </div>
+  {% endfor %}
   <div class="well">
     {{ form_start(linkForm, { 'attr': {'class': 'form-horizontal'} }) }}
       <div class="form-group">
