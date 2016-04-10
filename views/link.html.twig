@@ -1,0 +1,40 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}New link{% endblock %}
+
+{% block content %}
+  <h2 class="text-center">New link</h2>
+  <div class="well">
+    {{ form_start(linkForm, { 'attr': {'class': 'form-horizontal'} }) }}
+      <div class="form-group">
+        {{ form_label(linkForm.title, NULL, { 'label_attr':  {
+          'class': 'col-md-4 control-label'
+        }}) }}
+        <div class="col-md-6">
+        {{ form_errors(linkForm.title) }}
+        {{ form_widget(linkForm.title, { 'attr':  {
+          'class': 'form-control',
+          'placeholder': 'Enter your title'
+        }}) }}
+        </div>
+      </div>
+      <div class="form-group">
+        {{ form_label(linkForm.url, NULL, { 'label_attr':  {
+          'class': 'col-md-4 control-label'
+        }}) }}
+        <div class="col-md-6">
+          {{ form_errors(linkForm.url) }}
+          {{ form_widget(linkForm.url, { 'attr':  {
+            'class': 'form-control',
+            'placeholder': 'Enter your url'
+          }}) }}
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-4 col-sm-3">
+          <input type="submit" class="btn btn-primary" value="Save" />
+        </div>
+      </div>
+    {{ form_end(linkForm) }}
+  </div>
+{% endblock %}

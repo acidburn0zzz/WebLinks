@@ -43,9 +43,9 @@ class LinkDAO extends DAO
   public function save(Link $link)
   {
     $linkData = array(
-      link_title => $link->getTitle(),
-      link_url => $link->getUrl(),
-      link_user => $link->getUser()->getId()
+      'link_title' => $link->getTitle(),
+      'link_url' => $link->getUrl(),
+      'user_id' => $link->getUser()->getId()
     );
 
     if ($link->getId())

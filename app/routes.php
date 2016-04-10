@@ -1,6 +1,8 @@
 <?php
 
 use Symfony\Component\HttpFoundation\Request;
+use WebLinks\Domain\Link;
+use WebLinks\Form\Type\LinkType;
 
 // Home page
 $app->get('/', function () use ($app) {
@@ -9,7 +11,7 @@ $app->get('/', function () use ($app) {
 });
 
 // Link submit
-$app->match('/link/submit', function (Request $request) user ($app) {
+$app->match('/link/submit', function (Request $request) use ($app) {
   $link = new Link();
   $user = $app['security']->getToken()->getUser();
   if ($app['security']->isGranted('IS_AUTHENTICATED_FULLY')) {
