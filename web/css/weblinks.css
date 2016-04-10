@@ -10,3 +10,8 @@ body {
 @-moz-document url-prefix() {
     fieldset { display: table-cell; }
 }
+
+#errorPanel {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
