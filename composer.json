@@ -1,0 +1,15 @@
+{
+    "require": {
+        "silex/silex": "~1",
+        "doctrine/dbal": "~2",
+        "twig/twig": "~1",
+        "symfony/twig-bridge": "~2",
+        "symfony/security": "~2",
+        "symfony/form": "~2",
+        "symfony/translation": "~2",
+        "symfony/config": "~2"
+    },
+    "autoload": {
+        "psr-4": {"WebLinks\\": "src"}
+    }
+}
