@@ -4,14 +4,32 @@ use Symfony\Component\HttpFoundation\Request;
 
 // Home page
 $app->get('/', function () use ($app) {
-    $links = $app['dao.link']->findAll();
-    return $app['twig']->render('index.html.twig', array('links' => $links));
+  $links = $app['dao.link']->findAll();
+  return $app['twig']->render('index.html.twig', array('links' => $links));
 });
+
+// Link submit
+$app->match('/link/submit', function (Request $request) user ($app) {
+  $link = new Link();
+  $user = $app['security']->getToken()->getUser();
+  if ($app['security']->isGranted('IS_AUTHENTICATED_FULLY')) {
+    $link->setUser($user);
+    $linkForm = $app['form.factory']->create(new LinkType(), $link);
+    $linkForm->handleRequest($request);
+    if ($linkForm->isValid()) {
+      $app['dao.link']->save($link);
+      $app['session']->getFlashBag()->add('success', 'Your link was succesfully added.');
+    }
+    $linkFormView = $linkForm->createView();
+  }
+  return $app['twig']->render('link.html.twig', array('linkForm' => $linkFormView));
+});
+
 
 // Login form
 $app->get('/login', function(Request $request) use ($app) {
-    return $app['twig']->render('login.html.twig', array(
-      'error'         => $app['security.last_error']($request),
-      'last_username' => $app['session']->get('_security.last_username'),
-    ));
+  return $app['twig']->render('login.html.twig', array(
+    'error'         => $app['security.last_error']($request),
+    'last_username' => $app['session']->get('_security.last_username'),
+  ));
 })->bind('login');
