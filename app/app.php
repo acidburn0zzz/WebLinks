@@ -28,6 +28,8 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
     ),
   ),
 ));
+$app->register(new Silex\Provider\FormServiceProvider());
+$app->register(new Silex\Provider\TranslationServiceProvider());
 
 // Register services
 $app['dao.link'] = $app->share(function ($app) {
