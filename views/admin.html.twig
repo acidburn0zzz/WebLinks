@@ -5,7 +5,7 @@
 
 {% block content %}
   <h2 class="text-center">{{ block('title') }}</h2>
-  {% for flashmessage in app.session.flashbag.get('success') %}
+  {% for flashMessage in app.session.flashbag.get('success') %}
   <div class="alert alert-success">
     {{ flashMessage }}
   </div>
@@ -35,10 +35,10 @@
           {% for link in links %}
           <tr>
             <td>{{ link.title }}</td>
-            <td>{{ link.url }}</td>
+            <td>{{ link.url | truncate(60) }}</td>
             <td>
               <a href="{{ path('admin_link_edit', { 'id': link.id }) }}" class="btn btn-info btn-xs" title="Edit"><span class="glyphicon glyphicon-edit"></span></a>
-              <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#articleDialog{{ link.id }}"><span class="glyphicon glyphicon-remove"></span>
+              <button type="button" class="btn btn-danger btn-xs" title="Delete" data-toggle="modal" data-target="#linkDialog{{ link.id }}"><span class="glyphicon glyphicon-remove"></span>
               </button>
               <div class="modal fade" id="linkDialog{{ link.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
