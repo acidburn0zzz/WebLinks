@@ -9,7 +9,8 @@
         "symfony/translation": "~2",
         "symfony/config": "~2",
         "symfony/validator": "~2",
-        "symfony/config": "~2"
+        "symfony/config": "~2",
+        "twig/extensions": "~1"
     },
     "autoload": {
         "psr-4": {"WebLinks\\": "src"}

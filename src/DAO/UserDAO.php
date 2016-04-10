@@ -22,7 +22,7 @@ class UserDAO extends DAO implements UserProviderInterface
      * @return array A list of all users.
      */
     public function findAll() {
-        $sql = "SELECT * FROM t_user ORDER BY user_id DESC";
+        $sql = "SELECT * FROM t_user ORDER BY user_role, user_name";
         $result = $this->getDb()->fetchAll($sql);
 
         $entities = array();
