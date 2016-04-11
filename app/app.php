@@ -42,6 +42,11 @@ $app->register(new Silex\Provider\SecurityServiceProvider(), array(
 ));
 $app->register(new Silex\Provider\FormServiceProvider());
 $app->register(new Silex\Provider\TranslationServiceProvider());
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+  'monolog.logfile' => __DIR__.'/../var/logs/weblinks.log',
+  'monolog.name' => 'WebLinks',
+  'monolog.level' => $app['monolog.level']
+));
 $app->register(new Silex\Provider\ServiceControllerServiceProvider());
 if (isset($app['debug']) && $app['debug']) {
   $app->register(new Silex\Provider\HttpFragmentServiceProvider());

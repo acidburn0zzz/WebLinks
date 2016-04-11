@@ -10,3 +10,6 @@ $app['db.options'] = array(
     'user'     => 'weblinks_user',
     'password' => 'secret',
 );
+
+// define log level
+$app['monolog.level'] = 'WARNING';
